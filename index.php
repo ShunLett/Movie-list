@@ -34,9 +34,10 @@
               <img src="admin/<?= $movie['poster'] ?>" class="card-img-top" alt="Img">
               <div class="card-body">
                 <h5 class="card-title"><?= $movie['title'] ?></h5>
-                Year: <?= $movie['year'] ?><br/>
-                Genre: <?= $movie['genre'] ?><br/>
-                Type: <?= $movie['type'] ?>
+                Year: <?= ucfirst($movie['year']) ?><br/>
+                Genre: <?= ucfirst($movie['genre']) ?><br/>
+                Type: <?= ucfirst($movie['type']) ?><br/>
+                Status: <?= ucfirst($movie['status']) ?>
               </div>
             </div>
           </div>

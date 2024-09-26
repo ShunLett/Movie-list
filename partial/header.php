@@ -60,7 +60,7 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container d-flex flex-wrap align-items-center">
           <a href="index.php" class="navbar-brand">ShunMovies</a>
@@ -100,4 +100,4 @@
       <header class="py-3 mb-4 border-bottom">
       </header>
     </div>
-    <div class="container">
+    <div class="container-fluid">

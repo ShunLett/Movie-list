@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['isAuthenticated']) || !$_SESSION['isAuthenticated']) {
     header("Location: login.php");
     exit;
@@ -31,6 +30,7 @@ echo isset($_SESSION['isAuthenticated']) ? "logged in!" : "logged out!";
             <th scope="col">Year</th>
             <th scope="col">Genre</th>
             <th scope="col">Type</th>
+            <th scope="col">Status</th>
             <th scope="col">Created At</th>
             <th scope="col">Actions</th>
         </tr>
@@ -38,15 +38,20 @@ echo isset($_SESSION['isAuthenticated']) ? "logged in!" : "logged out!";
     <tbody>
         <?php foreach ($movie_list as $movie) { ?>
             <tr>
-                <td><img src="<?php echo $movie['poster']; ?>" width="50" /></td>
-                <td><?php echo $movie['title']; ?></td>
-                <td><?php echo $movie['year']; ?></td>
-                <td><?php echo $movie['genre']; ?></td>
-                <td><?php echo $movie['type']; ?></td>
-                <td><?php echo $movie['created_at']; ?></td>
+                <td><img src="<?php echo htmlspecialchars($movie['poster']); ?>" width="50" alt="Poster" /></td>
+                <td><?php echo htmlspecialchars($movie['title']); ?></td>
+                <td><?php echo ucfirst($movie['year']); ?></td>
+                <td><?php echo ucfirst($movie['genre']); ?></td>
+                <td><?php echo ucfirst($movie['type']); ?></td>
+                <td><?php echo ucfirst($movie['status']); ?></td>
+                <td><?php echo htmlspecialchars($movie['created_at']); ?></td>
                 <td>
-                    <a href="edit.php?id=<?php echo $movie['id']; ?>">Edit</a>
-                    <a href="delete.php?id=<?php echo $movie['id']; ?>">Delete</a>
+                    <a href="edit.php?id=<?php echo $movie['id']; ?>" class="btn btn-warning">
+                       <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a href="delete.php?id=<?php echo $movie['id']; ?>" class="btn btn-danger">
+                       <i class="fas fa-trash-alt"></i> Delete
+                    </a>
                 </td>
             </tr>
         <?php } ?>
@@ -54,6 +59,3 @@ echo isset($_SESSION['isAuthenticated']) ? "logged in!" : "logged out!";
 </table>
 
 <?php include_once("partial/footer.php"); ?>
-
-
-
